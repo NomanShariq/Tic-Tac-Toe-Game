@@ -83,10 +83,13 @@ class _TicTacToeGameState extends State<TicTacToeGame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tic Tac Toe'),
+        title: const Center(child: Text('Tic Tac Toe')),
       ),
       body: Column(
         children: [
+          const SizedBox(
+            height: 60,
+          ),
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.all(8),
