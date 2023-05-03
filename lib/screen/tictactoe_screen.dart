@@ -99,7 +99,9 @@ class _TicTacToeGameState extends State<TicTacToeGame> {
                   onTap: () => _handleTap(index),
                   child: Container(
                     decoration: BoxDecoration(
-                      border: Border.all(),
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
                     ),
                     child: Center(
                       child: Text(

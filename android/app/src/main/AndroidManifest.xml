@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tic_tac_toe_game">
    <application
-        android:label="tic_tac_toe_game"
+        android:label="Tic-Tac-toe Game"
         android:name="${applicationName}"
-        android:icon="@mipmap/logo">
+        android:icon="@mipmap/icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
