@@ -83,12 +83,89 @@ class _TicTacToeGameState extends State<TicTacToeGame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Tic Tac Toe')),
+        title: const Center(
+          child: Text(
+            'Tic Tac Toe',
+          ),
+        ),
+        actions: [
+          ElevatedButton(
+            onPressed: _resetScoreboard,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 68, 66, 66),
+            ),
+            // tooltip: 'Reset Scoreboard',
+            child: const Icon(
+              Icons.refresh,
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [
           const SizedBox(
-            height: 60,
+            height: 20,
+          ),
+          Container(
+            margin: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const Text(
+                  'Scoreboard',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                      children: [
+                        const Text(
+                          'X: ',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '$_xScore',
+                          style: const TextStyle(
+                            fontSize: 30,
+                            color: Colors.amber,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          'O: ',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '$_oScore',
+                          style: const TextStyle(
+                            fontSize: 30,
+                            color: Colors.amber,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 20,
           ),
           Expanded(
             child: GridView.builder(
@@ -110,6 +187,7 @@ class _TicTacToeGameState extends State<TicTacToeGame> {
                       child: Text(
                         _board![index],
                         style: const TextStyle(
+                          color: Colors.amber,
                           fontSize: 64,
                         ),
                       ),
@@ -117,40 +195,6 @@ class _TicTacToeGameState extends State<TicTacToeGame> {
                   ),
                 );
               },
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                const Text(
-                  'Scoreboard',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'X: $_xScore',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'O: $_oScore',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
             ),
           ),
           _winner != null
@@ -167,18 +211,19 @@ class _TicTacToeGameState extends State<TicTacToeGame> {
                       ),
                       ElevatedButton(
                         onPressed: _resetGame,
-                        child: const Text('Play Again'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                        ),
+                        child: const Text(
+                          'Play Again',
+                        ),
                       ),
                     ],
                   ),
                 )
               : Container(),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _resetScoreboard,
-        tooltip: 'Reset Scoreboard',
-        child: const Icon(Icons.refresh),
       ),
     );
   }
